@@ -24,7 +24,13 @@ Route::get('/posts/create',[PostController::class, 'create'])->name('posts.creat
 Route::get('/posts/show/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/posts',[PostController::class, 'index'])->name('posts.index');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+require __DIR__.'/auth.php';
